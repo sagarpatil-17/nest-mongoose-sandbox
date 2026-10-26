@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { StudentModule } from './modules/student/student.module';
+import { UserModule } from './modules/user/user.module';
+import { EmployeeModule } from './modules/employee/employee.module';
 
 @Module({
   imports: [
@@ -17,7 +19,11 @@ import { StudentModule } from './modules/student/student.module';
       }),
     }),
 
-    StudentModule
+    StudentModule,
+
+    UserModule,
+
+    EmployeeModule
   ],
   controllers: [],
   providers: [],
