@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Req, Request, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { AuthGuard } from '@nestjs/passport';
+import { Throttle } from '@nestjs/throttler';
 
 @Controller('user')
 export class UserController {
@@ -11,6 +12,7 @@ export class UserController {
         return this.userService.createUser();
     }
 
+    @Throttle({ default: { limit: 3, ttl: 30000 } })
     @Get('all')
     async findAllUsers() {
         return this.userService.findAllUsers();
