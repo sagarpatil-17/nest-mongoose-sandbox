@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { StudentModule } from './modules/student/student.module';
 import { UserModule } from './modules/user/user.module';
 import { EmployeeModule } from './modules/employee/employee.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -18,12 +19,10 @@ import { EmployeeModule } from './modules/employee/employee.module';
         uri: configService.getOrThrow<string>('DATABASE_URL'),
       }),
     }),
-
     StudentModule,
-
     UserModule,
-
-    EmployeeModule
+    EmployeeModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],
